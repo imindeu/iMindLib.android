@@ -1,0 +1,27 @@
+apply plugin: "com.android.library"
+apply from: "../check.gradle"
+apply from: "../jitpack.gradle"
+
+android {
+    compileSdkVersion ver.compileSdk
+    buildToolsVersion ver.buildTools
+
+    defaultConfig {
+        minSdkVersion ver.minSdk
+        targetSdkVersion ver.targetSdk
+        versionCode 1
+        versionName "0.1.0"
+        consumerProguardFiles "proguard-rules.txt"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+}
+
+dependencies {
+    compile dep.appCompat
+    compile dep.okhttp
+    compile dep.exoPlayer
+    compile dep.exoPlayerOkhttp
+
+    androidTestCompile dep.espresso
+    testCompile dep.junit
+}

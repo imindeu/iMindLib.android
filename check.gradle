@@ -1,0 +1,58 @@
+apply plugin: "checkstyle"
+apply plugin: "pmd"
+
+def reportsDir = "${project.buildDir}/reports"
+
+task checkstyle(type: Checkstyle) {
+    group "verification"
+    ignoreFailures true
+    configFile rootProject.file("checkstyle.xml")
+    source "src"
+    include "**/*.java"
+    exclude "**/gen/**"
+    reports {
+        xml.enabled = false
+        html.enabled = true
+        xml {
+            destination "$reportsDir/checkstyle-report.xml"
+        }
+        html {
+            destination "$reportsDir/checkstyle-report.html"
+        }
+    }
+    classpath = files()
+}
+
+task pmd(type: Pmd) {
+    group "verification"
+    ignoreFailures true
+    ruleSetFiles = rootProject.files("pmd.xml")
+    ruleSets = []
+    source "src"
+    include "**/*.java"
+    exclude "**/gen/**"
+    reports {
+        xml.enabled = false
+        html.enabled = true
+        xml {
+            destination "$reportsDir/pmd-report.xml"
+        }
+        html {
+            destination "$reportsDir/pmd-report.html"
+        }
+    }
+}
+
+check.dependsOn "checkstyle", "pmd"
+
+android {
+    lintOptions {
+        abortOnError false
+        disable "InvalidPackage", "NewerVersionAvailable", "GradleDependency"
+        lintConfig rootProject.file("lint.xml")
+        xmlReport false
+        htmlReport true
+        xmlOutput file("$reportsDir/lint-report.xml")
+        htmlOutput file("$reportsDir/lint-report.html")
+    }
+}

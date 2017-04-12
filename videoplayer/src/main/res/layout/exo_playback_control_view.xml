@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:background="@color/video_player_control"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:orientation="horizontal">
+
+        <ImageButton android:id="@id/exo_rew"
+            style="@style/ExoMediaButton.Rewind"
+            android:layout_height="match_parent" />
+
+        <ImageButton android:id="@id/exo_play"
+            style="@style/ExoMediaButton.Play"
+            android:layout_height="match_parent" />
+
+        <ImageButton android:id="@id/exo_pause"
+            style="@style/ExoMediaButton.Pause"
+            android:layout_height="match_parent" />
+
+        <ImageButton android:id="@id/exo_ffwd"
+            style="@style/ExoMediaButton.FastForward"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@id/exo_position"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:includeFontPadding="false"
+            android:textColor="#FFBEBEBE"/>
+
+        <SeekBar
+            style="@style/Widget.AppCompat.SeekBar"
+            android:id="@id/exo_progress"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:focusable="false" />
+
+        <TextView
+            android:id="@id/exo_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:includeFontPadding="false"
+            android:textColor="#FFBEBEBE"/>
+
+    </LinearLayout>
+
+</LinearLayout>

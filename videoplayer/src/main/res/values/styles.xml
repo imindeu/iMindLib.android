@@ -1,0 +1,13 @@
+<resources>
+
+    <style name="Dialog.VideoPlayer" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowBackground">@color/video_player_dialog</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:paddingLeft">0dp</item>
+        <item name="android:paddingRight">0dp</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+</resources>

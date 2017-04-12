@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorAccent">#43bf3f</color>
+
+    <color name="video_player_dialog">#CC000000</color>
+    <color name="video_player_control">#CC000000</color>
+    <color name="video_player_overlay">#88000000</color>
+    <color name="video_player_retry">#88000000</color>
+</resources>

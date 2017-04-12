@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="exo_video_player_dialog_layout" type="id" />
+    <item name="exo_video_player_view" type="id" />
+    <item name="exo_overlay_layout" type="id" />
+    <item name="exo_overlay_retry_button" type="id" />
+    <item name="exo_overlay_close_button" type="id" />
+</resources>

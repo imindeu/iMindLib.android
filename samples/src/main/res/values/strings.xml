@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">iMindLib</string>
+    <string name="open">Open</string>
+    <string name="error_loading_media">Error while loading media</string>
+</resources>
