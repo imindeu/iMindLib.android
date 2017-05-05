@@ -1,4 +1,4 @@
 <resources>
-    <string name="video_player_retry">Retry</string>
+    <string name="video_player_retry">RETRY</string>
     <string name="video_player_close">Close</string>
 </resources>
