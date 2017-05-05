@@ -9,14 +9,15 @@ android {
     defaultConfig {
         minSdkVersion ver.minSdk
         targetSdkVersion ver.targetSdk
-        versionCode 2
-        versionName "0.1.1"
+        versionCode 3
+        versionName "0.1.2"
         consumerProguardFiles "proguard-rules.txt"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 }
 
 dependencies {
+    compile dep.support
     compile dep.appCompat
     compile dep.okhttp
     compile dep.exoPlayer

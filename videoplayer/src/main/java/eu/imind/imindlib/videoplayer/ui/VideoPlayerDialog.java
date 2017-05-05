@@ -1,15 +1,18 @@
 package eu.imind.imindlib.videoplayer.ui;
 
 import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatDialogFragment;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 
 import eu.imind.imindlib.videoplayer.R;
 import eu.imind.imindlib.videoplayer.media.VideoPlayer;
@@ -46,7 +49,7 @@ public abstract class VideoPlayerDialog extends AppCompatDialogFragment implemen
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setStyle(STYLE_NO_TITLE, R.style.Dialog_VideoPlayer);
+        setStyle(STYLE_NO_TITLE, 0);
     }
 
     @Nullable
@@ -88,6 +91,20 @@ public abstract class VideoPlayerDialog extends AppCompatDialogFragment implemen
 
         mVideoView.hideController();
         mVideoView.setOnClickRetryListener(this);
+    }
+
+    @SuppressWarnings("ConstantConditions")
+    @Override
+    public void onResume() {
+        ViewGroup.LayoutParams params = getDialog().getWindow().getAttributes();
+        params.width = WindowManager.LayoutParams.MATCH_PARENT;
+        params.height = WindowManager.LayoutParams.MATCH_PARENT;
+
+        int bgColor = ContextCompat.getColor(getActivity(), R.color.video_player_dialog);
+        getDialog().getWindow().setAttributes((WindowManager.LayoutParams) params);
+        getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(bgColor));
+
+        super.onResume();
     }
 
     @Override
