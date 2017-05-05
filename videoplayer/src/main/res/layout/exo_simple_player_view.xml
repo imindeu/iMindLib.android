@@ -40,16 +40,16 @@
         android:background="@color/video_player_overlay"
         android:visibility="gone">
 
-        <eu.imind.imindlib.videoplayer.ui.SquareButton
+        <Button
             android:id="@id/exo_overlay_retry_button"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_centerInParent="true"
-            android:text="@string/retry"
+            android:text="@string/video_player_retry"
             android:textColor="@android:color/white"
             android:textStyle="bold"
             android:textAllCaps="true"
-            android:background="@drawable/bg_retry_button" />
+            android:background="@drawable/video_player_bg_oval_dark" />
 
     </RelativeLayout>
 

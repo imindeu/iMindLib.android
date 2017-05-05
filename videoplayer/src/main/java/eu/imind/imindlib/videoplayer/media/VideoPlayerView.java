@@ -20,7 +20,6 @@ import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
 import com.google.android.exoplayer2.ui.SubtitleView;
 
 import eu.imind.imindlib.videoplayer.R;
-import eu.imind.imindlib.videoplayer.ui.SquareButton;
 
 import static com.google.android.exoplayer2.C.TIME_UNSET;
 import static com.google.android.exoplayer2.ExoPlaybackException.TYPE_SOURCE;
@@ -137,8 +136,8 @@ public final class VideoPlayerView extends FrameLayout {
     };
 
     private void setupOverlay() {
-        SquareButton retryButton = mOverlayLayout != null
-                ? (SquareButton) mOverlayLayout.findViewById(R.id.exo_overlay_retry_button) : null;
+        View retryButton = mOverlayLayout != null
+                ? mOverlayLayout.findViewById(R.id.exo_overlay_retry_button) : null;
         if (retryButton != null) {
             retryButton.setOnClickListener(new OnClickListener() {
                 @Override

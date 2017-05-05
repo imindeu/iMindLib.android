@@ -33,7 +33,6 @@ public abstract class VideoPlayerController implements OkHttpClientProvider,
     protected final Context mContext;
     protected final OkHttpClient mHttpClient;
     protected final List<VideoPlayer> mVideoPlayers;
-    protected VideoPlayer mLastActiveVideoPlayer;
 
     public VideoPlayerController(@NonNull Context context) {
         mContext = context;
@@ -67,25 +66,7 @@ public abstract class VideoPlayerController implements OkHttpClientProvider,
         }
     }
 
-    public void mute() {
-        for (VideoPlayer videoPlayer : mVideoPlayers) {
-            if (videoPlayer.isPlaying()) {
-                videoPlayer.adjustVolume(0);
-                mLastActiveVideoPlayer = videoPlayer;
-                return;
-            }
-        }
-        mLastActiveVideoPlayer = null;
-    }
-
-    public void unmute() {
-        if (mLastActiveVideoPlayer != null) {
-            mLastActiveVideoPlayer.adjustVolume(1);
-        }
-    }
-
     public void release() {
-        mLastActiveVideoPlayer = null;
         Iterator<VideoPlayer> it = mVideoPlayers.iterator();
         while (it.hasNext()) {
             it.next().release();

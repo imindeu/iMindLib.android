@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:keepScreenOn="true">
@@ -20,14 +21,16 @@
         <eu.imind.imindlib.videoplayer.media.VideoPlayerView
             android:id="@+id/video_player1"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_marginBottom="20dp" />
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:resize_mode="fixed_width" />
 
         <eu.imind.imindlib.videoplayer.media.VideoPlayerView
             android:id="@+id/video_player2"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_marginBottom="20dp" />
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:resize_mode="fixed_width" />
 
     </LinearLayout>
 
