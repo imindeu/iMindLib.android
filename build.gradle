@@ -4,6 +4,7 @@ buildscript {
     }
     dependencies {
         classpath "com.android.tools.build:gradle:2.3.1"
+        classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3"
         classpath "com.github.dcendents:android-maven-gradle-plugin:1.5"
     }
 }
@@ -14,8 +15,23 @@ allprojects {
     }
 }
 
+if (JavaVersion.current().isJava8Compatible()) {
+    allprojects {
+        tasks.withType(Javadoc) {
+            options.addStringOption('Xdoclint:none', '-quiet')
+        }
+    }
+}
+
 subprojects {
     ext {
+        glb = [ version : "0.1.3" ]
+
+        bnt = [ repo : "imindlib",
+                group : "eu.imind.imindlib",
+                name : "${project.name}",
+                version : "$glb.version" ]
+
         ver = [ minSdk : 17,
                 targetSdk : 25,
                 compileSdk : 25,

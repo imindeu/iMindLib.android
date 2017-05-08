@@ -1,0 +1,82 @@
+apply plugin: "com.github.dcendents.android-maven"
+apply plugin: "com.jfrog.bintray"
+
+group = bnt.group
+version = bnt.version
+
+def webSiteUrl = "http://www.imind.eu"
+def gitUrl = "https://github.com/imindeu/iMindLib.android.git"
+
+bintray {
+    user = BINTRAY_USER
+    key = BINTRAY_KEY
+    configurations = ["archives"]
+    override = true
+    publish = true
+
+    pkg {
+        repo = bnt.repo
+        name = bnt.name
+        licenses = ["MIT"]
+        websiteUrl = webSiteUrl
+        vcsUrl = gitUrl
+
+        version {
+            name = bnt.version
+        }
+    }
+}
+
+install {
+    repositories.mavenInstaller {
+        pom.project {
+            packaging "aar"
+            groupId bnt.group
+            artifactId bnt.name
+            version bnt.version
+            name bnt.name
+            url webSiteUrl
+            inceptionYear "2017"
+
+            licenses {
+                license {
+                    name "MIT"
+                    url "https://opensource.org/licenses/mit-license.php"
+                    distribution "repo"
+                }
+            }
+
+            scm {
+                connection gitUrl
+                developerConnection gitUrl
+                url webSiteUrl
+            }
+        }
+    }
+}
+
+task publishBintray() {
+    group = "publishing"
+    dependsOn ":${project.name}:install"
+    finalizedBy ":${project.name}:bintrayUpload"
+}
+
+task sourcesJar(type: Jar) {
+    classifier = "sources"
+    from android.sourceSets.main.java.srcDirs
+}
+
+task javadoc(type: Javadoc) {
+    //source = android.sourceSets.main.java.srcDirs
+    //classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = "javadoc"
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
